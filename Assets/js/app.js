@@ -20,41 +20,44 @@ function checkTime(i) {
     return i;
 }
 
-function countHour(){
-    let groupArra = [" Grupo 1 Activo", " Grupo 2 Activo", "Grupo 3 Activo", " Grupo 4 Activo"];
-    let groupCounter = 4;
-    const minFaltante = new Date();
-    let minute = minFaltante.getUTCMinutes();
-    list = 0;
-    let restante = 60;
+function grupoActivo(){
+    const serverAct = true;
+    const groupArra = [" Grupo 1 Activo", " Grupo 2 Activo", "Grupo 3 Activo", " Grupo 4 Activo"];
+    list = 2;
 
-    if (restante > 0) {
-        switch (list){
-            case 0:
-                document.getElementById('group').innerHTML = groupArra[0];    
-                break;
-
-            case 1:
-                document.getElementById('group').innerHTML = groupArra[1];
-                break;
-
-            case 2:
-                document.getElementById('group').innerHTML = groupArra[2];
-                    break;
-
-            default :
-                document.getElementById('group').innerHTML = groupArra[0];
-                break;
-
+    switch(list) {
+        case 0:
+            document.getElementById('group').innerHTML = ("Grupo 1 Activo");
+            break;
+        case 1:
+            document.getElementById('group').innerHTML = ("Grupo 2 Activo");
+            break;
+        case 2:
+            document.getElementById('group').innerHTML = ("Grupo 3 Activo");
+            break;
+        default :
+            document.getElementById('group').innerHTML = ("Grupo 4 Activo");
+            break;
     }
-    document.getElementById('minRes').innerHTML = ("Quedan " + restante + " min ");
-    restante = restante - minute;
-    list ++;
-}
-
-
 
 }
 
-countHour();
+function minRestantes(){
+    const minuto = new Date();
+    let minRest = minuto.getUTCMinutes();
+    serverTimer = true;
+    let listTimer = 60;
+
+    if(serverTimer != false){
+        listTimer = listTimer - minRest;
+        document.getElementById('minRes').innerHTML = ("Quedan " + listTimer + " Minutos");
+    }
+
+
+
+}
+    
+
+grupoActivo();
+minRestantes();
 startTime();
