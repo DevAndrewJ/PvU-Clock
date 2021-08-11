@@ -13,8 +13,6 @@ function startTime() {
     s = checkTime(s);
     document.getElementById('txt').innerHTML =  h + ":" + m + ":" + s;
     setTimeout(startTime, 1000);
-
-
 }
 
 function checkTime(i) {
@@ -25,31 +23,37 @@ function checkTime(i) {
 function countHour(){
     let groupArra = [" Grupo 1 Activo", " Grupo 2 Activo", "Grupo 3 Activo", " Grupo 4 Activo"];
     let groupCounter = 4;
-    res = groupCounter;
     const minFaltante = new Date();
     let minute = minFaltante.getUTCMinutes();
+    list = 0;
     let restante = 60;
-    for(i = 3; i <= groupArra.length; i--){
-        if(groupCounter >= 0 && restante != 0){
-            document.getElementById('group').innerHTML = groupArra[i];
-            groupCounter = groupCounter - 1;
-            restante = restante - minute;
-            document.getElementById('minRes').innerHTML = ("Restan "+ restante + " min");
-            return console.log(groupCounter);
-        }
-        else {
-            groupCounter = 4;
-        }
+
+    if (restante > 0) {
+        switch (list){
+            case 0:
+                document.getElementById('group').innerHTML = groupArra[0];    
+                break;
+
+            case 1:
+                document.getElementById('group').innerHTML = groupArra[1];
+                break;
+
+            case 2:
+                document.getElementById('group').innerHTML = groupArra[2];
+                    break;
+
+            default :
+                document.getElementById('group').innerHTML = groupArra[0];
+                break;
+
     }
+    document.getElementById('minRes').innerHTML = ("Quedan " + restante + " min ");
+    restante = restante - minute;
+    list ++;
 }
 
-function checkGroup(){
-    
-    let listNumber = 4;
-    let groupCounter = 0;
-    for(i = 0; groupCounter <= groupArra.length[i]; i++){
 
-    }
+
 }
 
 countHour();
