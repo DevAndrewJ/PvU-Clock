@@ -3,7 +3,7 @@
 
 //Referencias html
 let listTimer = 0;
-listCounter = 0;
+listCounter = 2;
 
 function startTime() {
     const today = new Date();
