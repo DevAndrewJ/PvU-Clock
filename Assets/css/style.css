@@ -28,8 +28,19 @@ h1{
     font-size: 5rem;
 }
 
+#minRes{
+    display: flex;
+    justify-content: center;
+    font-size: 2.5rem;
+    margin-top: 2rem;
+}
+
 h2 {
-    font-size: 5rem;
+    display: flex;
+    align-items: center;
+    font-size: 3rem;
+    margin-left: 1rem;
+    color: green;
 }
 span{
     font-size: 5rem;
