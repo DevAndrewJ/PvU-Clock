@@ -2,7 +2,8 @@
 
 
 //Referencias html
-
+let listTimer = 0;
+listCounter = 0;
 
 function startTime() {
     const today = new Date();
@@ -12,6 +13,8 @@ function startTime() {
     m = checkTime(m);
     s = checkTime(s);
     document.getElementById('txt').innerHTML =  h + ":" + m + ":" + s;
+    minRestantes();
+    grupoActivo();
     setTimeout(startTime, 1000);
 }
 
@@ -21,11 +24,19 @@ function checkTime(i) {
 }
 
 function grupoActivo(){
-    const serverAct = true;
-    const groupArra = [" Grupo 1 Activo", " Grupo 2 Activo", "Grupo 3 Activo", " Grupo 4 Activo"];
-    list = 2;
 
-    switch(list) {
+    if(listTimer == 0){
+        listCounter ++;
+    }  
+
+    console.log(listCounter);
+
+    if(listCounter == 4){
+        listCounter = 0;
+    }
+
+
+    switch(listCounter) {
         case 0:
             document.getElementById('group').innerHTML = ("Grupo 1 Activo");
             break;
@@ -35,9 +46,12 @@ function grupoActivo(){
         case 2:
             document.getElementById('group').innerHTML = ("Grupo 3 Activo");
             break;
-        default :
+        case 3:
             document.getElementById('group').innerHTML = ("Grupo 4 Activo");
             break;
+        default :
+            return false;
+
     }
 
 }
@@ -46,11 +60,12 @@ function minRestantes(){
     const minuto = new Date();
     let minRest = minuto.getUTCMinutes();
     serverTimer = true;
-    let listTimer = 60;
-
+    listTimer = 60 - minRest;
     if(serverTimer != false){
-        listTimer = listTimer - minRest;
         document.getElementById('minRes').innerHTML = ("Quedan " + listTimer + " Minutos");
+        if (listTimer == 0) {
+            serverTimer = false;
+        }
     }
 
 
@@ -58,6 +73,5 @@ function minRestantes(){
 }
     
 
-grupoActivo();
-minRestantes();
 startTime();
+grupoActivo();
